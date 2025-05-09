@@ -1,8 +1,48 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --brand: hsl(166, 100%, 20%);
+  --brand-dark: hsl(166, 100%, 15%); 
+  --brand-light: hsl(166, 100%, 20%, 0.7);
+  --search-shadow-overall: 5px 5px 15px 5px hsl(240, 10%, 50%);
+  --map-shadow-overall: 2px 2px 15px 2px hsl(240, 10%, 50%);
+  --light-brown: hsl(240, 30%, 90%);
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
 }
 
 @theme inline {
@@ -10,17 +50,349 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+
+
+/* clerk class overriding */
+.cl-headerTitle{
+  @apply p-2 text-(--brand);
+}
+.cl-formButtonPrimary{
+  @apply bg-(--brand) hover:bg-(--brand-dark);
+}
+.cl-footerActionLink{
+  @apply text-(--brand) hover:text-(--brand-dark);
+}
+.cl-internal-1dauvpw{
+  display: none;
+}
+.cl-internal-1hp5nqm{
+  display: none;
+}
+.cl-userButtonTrigger{
+  @apply w-[30px] h-[30px] flex justify-center items-center;
+}
+.cl-userButtonBox{
+  @apply w-full h-full flex justify-center items-center;
+}
+.cl-avatarBox{
+  @apply w-full h-full flex justify-center items-center;
+}
+.cl-internal-gpirto{
+  display: none;
+}
+
+/* home */
+.home-container{
+  @apply w-screen h-full flex flex-col justify-start items-start lg:px-4;
+}
+/* onboarding page*/
+.onboarding-page{
+  @apply w-screen min-h-[600px] h-auto flex flex-col justify-start items-center p-8;
+}
+.rider-form{
+  @apply w-1/3 h-full flex flex-col justify-between items-center p-4 space-y-10;
+}
+.driver-form{
+  @apply w-1/3 h-full flex flex-col justify-between items-center p-4 space-y-10;
+}
+.rider-onboarding-form-container{
+  @apply w-full h-4/5 flex flex-col justify-evenly items-center bg-(--light-brown) p-8 rounded-lg shadow-lg border border-gray-300 space-y-6;
+}
+.driver-onboarding-form-container{
+  @apply w-full h-4/5 flex flex-col justify-evenly items-center bg-(--light-brown) p-8 rounded-lg shadow-lg border border-gray-300 space-y-6;
+}
+.form-item{
+  @apply w-full h-auto flex flex-col justify-center items-start space-y-2;
+}
+.form-label{
+  @apply w-full h-1/2 flex self-start items-center hover:cursor-pointer;
+}
+.form-input{
+  @apply w-full h-[40px] border-1 border-gray-500 focus:outline-2 focus:outline-blue-600 focus:outline-offset-1 rounded-md px-2;
+}
+.submit-button-container{
+  @apply w-full h-[45px] flex flex-col justify-center items-center bg-black text-white rounded-md p-4 hover:cursor-pointer hover:bg-gray-800;
+}
+.submit-button{
+  @apply w-full h-full flex justify-center items-center rounded-md hover:cursor-pointer;
+}
+
+/* home page/ride page/rider account */
+.rider-home-container{
+  @apply w-[99%] min-h-full hidden lg:flex flex-col justify-start items-center lg:flex-row lg:justify-between lg:items-start bg-gray-200 py-15 lg:px-4;
+}
+/* .rider-home-container-mob{
+  @apply w-screen h-full flex flex-col justify-start items-center bg-gray-200 py-4 px-4 lg:hidden;
+} */
+.search-car-list-container{
+  @apply hidden w-1/3 h-full lg:flex flex-col justify-center items-center space-y-6;
+}
+.search-car-list-container-mob{
+  @apply w-full h-auto flex flex-col justify-start items-center space-y-4 lg:hidden;
+}
+/* home page/ride page/rider account - search section*/
+.search-container{
+ @apply w-full h-[400px] flex flex-col justify-center items-center;
+}
+.search-box{
+  @apply w-full lg:w-[90%] h-full flex flex-col justify-center items-center space-y-5 px-10 rounded-xl shadow-(--search-shadow-overall);
+}
+.search-heading{
+  @apply w-full h-[30px] flex justify-center items-center font-bold text-2xl tracking-wider;
+}
+.search-form{
+  @apply w-full h-[60%] flex flex-col justify-start items-center border border-gray-300 px-4 rounded-md shadow-sm;
+}
+.search-input-container{
+  @apply w-full h-auto flex flex-col justify-start items-center space-y-4 py-8;
+}
+.search-input{
+  @apply w-full h-[40px] flex justify-start items-center bg-slate-300 p-2 gap-4 rounded-md;
+}
+.search-button-container{
+  @apply w-full h-[40px] flex flex-col justify-center items-center bg-black rounded-md hover:bg-gray-800;
+}
+.search-button{
+  @apply w-full h-full text-white tracking-wider flex justify-center items-center hover:cursor-pointer;
+}
+/* rider account - car-list section */
+.car-list-section{
+  @apply w-[90%] max-h-[400px] h-auto flex flex-col justify-center items-start space-y-4 p-8 overflow-y-auto bg-white rounded-lg shadow-2xl;
+}
+.car-list-container{
+  @apply w-full h-auto flex flex-col justify-between items-center overflow-y-auto bg-gray-100 rounded-lg;
+}
+.car-option{
+  @apply w-full h-auto flex justify-start items-center space-y-4 rounded-lg transition duration-200 ease-in-out hover:cursor-pointer hover:bg-gray-200;
+}
+.active-car-option{
+  @apply w-full h-auto flex justify-start items-center space-y-4 rounded-lg bg-gray-300 hover:cursor-pointer;
+}
+.ride-detail-card{
+  @apply w-[90%] h-auto flex justify-center items-start rounded-md p-4;
+}
+.ride-request-button{
+  @apply w-[200px] h-auto max-h-[60px] min-h-[40px] flex justify-center items-center bg-black p-2 text-white text-sm tracking-wider rounded-lg hover:cursor-pointer hover:bg-gray-800;
+}
+/* home page/ride page/rider account - map-message section */
+.map-message-section{
+  @apply w-2/3 h-full hidden lg:flex flex-col justify-center items-start space-y-10;
+}
+.map-section-mob{
+  @apply w-full min-h-[500px] h-auto flex flex-col justify-center items-center lg:hidden;
+}
+.google-map-container{
+  @apply w-full h-[500px] flex justify-center items-start;
+}
+.ride-list-section{
+  @apply w-full h-auto flex flex-col justify-start items-center space-y-6 px-4 lg:px-20;
+}
+.message-section{
+  @apply w-1/2 h-auto flex flex-col justify-center items-center;
+}
+.current-ride-section{
+  @apply w-screen lg:w-[800px] h-auto flex flex-col justify-center items-center px-4 lg:px-0;
+}
+.next-ride-section{
+  @apply w-screen lg:w-[800px] h-auto flex flex-col justify-center items-center px-4 lg:px-0;
+}
+.next-rides-container{
+  @apply w-full max-h-[450px] h-auto flex flex-col justify-start items-center space-y-6 px-6 bg-gray-200 rounded-md py-8 overflow-y-auto shadow-(--search-shadow-overall);
+}
+.current-ride-container{
+  @apply w-full min-h-[350px] h-auto flex flex-col justify-start items-start space-y-2 p-4 bg-gray-100 rounded-md;
+}
+.message-container{
+  @apply w-full h-full flex flex-col justify-start items-center bg-white p-4 space-y-6 rounded-lg;
+}
+/* home page/ride page/rider account - search section -- autocomplete */
+.source-autocomplete{
+  @apply w-[300px] h-auto absolute top-[800px] left-[110px] lg:top-[310px] lg:left-[110px] flex justify-center items-center overflow-y-auto overflow-x-hidden;
+}
+.destination-autocomplete{
+  @apply w-[300px] h-auto absolute top-[850px] left-[110px] lg:top-[370px] lg:left-[110px] flex justify-center items-center overflow-y-auto overflow-x-hidden;
+}
+.autocomplete-dropdown{
+  @apply w-full h-full flex flex-col justify-center items-start text-start flex-wrap p-4 bg-white overflow-y-auto overflow-x-hidden rounded-md;
+}
+.suggestion-item{
+  @apply w-full h-auto flex justify-start items-center flex-wrap bg-white hover:cursor-pointer p-4;
+}
+.suggestion-item-active{
+  @apply w-full h-auto flex justify-start items-center flex-wrap bg-gray-300 hover:cursor-pointer rounded-md p-4;
+}
+.clear-button{
+  @apply w-[20px] h-[20px] flex justify-center items-center rounded-[60px] hover:bg-gray-400 hover:cursor-pointer;
+}
+
+/* drive page */
+.driver-page-container{
+  @apply w-screen h-auto lg:h-[630px] flex flex-col justify-start items-center bg-black mt-4 overflow-hidden;
+}
+.driver-navbar{
+  @apply w-screen h-[50px] flex justify-between items-center px-8 bg-gray-200;
+}
+.driver-main-container{
+  @apply w-full h-full flex flex-col lg:flex-row justify-start space-y-4 lg:space-y-0 lg:justify-between items-center p-8;
+}
+.driver-illustration-container{
+  @apply w-1/2 h-full flex justify-center items-center;
+}
+.driver-message-container{
+  @apply w-full lg:w-2/3 h-full flex flex-col justify-center items-center space-y-10 p-4;
+}
+.driver-authentication{
+  @apply w-full h-auto flex justify-center items-center space-x-15;
+}
+
+/* driver account */
+.driver-home-container{
+  @apply w-[98%] h-full flex flex-col justify-start items-center bg-gray-200 py-15 space-y-10 px-4 lg:px-4;
+}
+.driver-map-container{
+  @apply w-full h-[600px] flex justify-center items-center;
+}
+.driver-ride-list-container{
+  @apply w-full h-full flex items-start px-8;
+}
+.driver-current-ride{
+  @apply w-full lg:w-[600px] h-auto flex flex-col justify-center items-center px-4 lg:px-0;
+}
+.driver-upcoming-rides{
+  @apply w-full lg:w-[800px] h-auto flex flex-col justify-center items-center px-4 lg:px-0;
+}
+.request-display{
+  @apply w-4/5 h-full flex flex-col justify-start items-center;
+}
+
+/* notification page */
+.notification-page-container{
+  @apply w-screen h-full flex flex-col justify-center items-start lg:p-4;
+}
+.message-card-dialog-container{
+  @apply w-full lg:w-3/5 h-auto flex justify-start items-center px-4 lg:px-0; 
+}
+.message-card-container{
+  @apply w-full h-[150px] flex flex-col justify-start items-start px-8 py-4 rounded-[10px] shadow-xl bg-[#eaf8f4] outline-2 outline-green-700 -outline-offset-6 transition duration-200 ease-in-out hover:cursor-pointer hover:scale-102 hover:shadow-md;
+}
+
+/* payment success page */
+.payment-success-page{
+  @apply w-full h-full flex flex-col justify-center items-center px-8 py-15;
+}
+.payment-details{
+  @apply w-2/5 h-4/5 flex flex-col justify-start items-center p-8 shadow-lg bg-white rounded-md space-y-10;
+}
+.payment-data{
+  @apply w-full min-h-[300px] h-auto flex flex-col justify-start items-start space-y-4 px-4;
+}
+.info-container{
+  @apply w-[400px] h-auto flex justify-between items-start bg-white rounded-md shadow-md z-20 fixed top-[70px] left-[500px];
+}
+.info-message-container{
+  @apply w-[95%] h-full flex flex-col justify-start items-start p-2;
+}
+.info-close{
+  @apply w-[5%] h-[30px] flex justify-center items-center;
+}
+.error-container{
+  @apply w-[400px] h-auto flex justify-between items-start bg-white rounded-md shadow-md z-20 fixed top-[70px] left-[500px];
+}
+.error-message-container{
+  @apply w-[95%] h-full flex flex-col justify-start items-start p-2;
+}
+
+.error-close{
+  @apply w-[5%] h-[30px] flex justify-center items-center;
+}
+
+.ride-history-page{
+  @apply w-screen h-full flex flex-col justify-center items-center p-4 space-y-6;
+}
+
+.ride-history-container{
+  @apply w-4/5 h-4/5 flex flex-col justify-start items-start space-y-6 px-4 py-8 bg-gray-300 rounded-lg shadow-lg;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+
   }
+  body {
+    @apply bg-background text-foreground;
+
+  }
+
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
