@@ -82,7 +82,9 @@ const RideHistoryPage = () => {
             <div className="ride-history-container">
                 {rideHistory.map((ride, index)=>(
                     <div 
-                    key={index}>
+                    key={index}
+                    className="w-full h-full flex flex-col justify-start items-start"
+                    >
                         
                         <RideHistoryCard ride={ride} role={user.publicMetadata.role as string}/>
                     </div>
