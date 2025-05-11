@@ -66,7 +66,7 @@ const RideHistoryCard = ({ride, role}:{ride: DocumentData, role: string}) => {
     //display details for rider
     if(role === "rider"){
         return (
-            <div className="w-full h-full flex flex-col justify-start items-start space-y-2 tracking-wide text-sm bg-white">
+            <div className="w-full h-full flex flex-col justify-start items-start space-y-2 tracking-wide text-sm bg-white p-4 rounded-md">
                 <div className="w-full h-auto flex justify-start items-start space-x-16">
                     <p className="text-gray-500">Ride Date: </p>
                     <p>{convertToDateTime(ride.requestTime)}</p>
@@ -125,7 +125,7 @@ const RideHistoryCard = ({ride, role}:{ride: DocumentData, role: string}) => {
     //display details for driver
     else{
         return (
-            <div className="w-full h-full flex flex-col justify-start items-start space-y-2 tracking-wide text-sm ">
+            <div className="w-full h-full flex flex-col justify-start items-start space-y-2 tracking-wide text-sm bg-white p-4 rounded-md">
                 <div className="w-full h-auto flex justify-start items-start space-x-16">
                     <p className="text-gray-500">Ride Date: </p>
                     <p>{convertToDateTime(ride.requestTime)}</p>
