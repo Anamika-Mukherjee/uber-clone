@@ -105,7 +105,7 @@ const RideHistoryCard = ({ride, role}:{ride: DocumentData, role: string}) => {
                             </div>
                             <div className="w-full h-auto flex justify-start items-start space-x-12">
                                 <p className="text-gray-500">Amount Paid: </p>
-                                <p>{paymentDetails.amount}</p>
+                                <p>&#8377;{paymentDetails.amount}</p>
                             </div>
                             <div className="w-full h-auto flex justify-start items-start space-x-5">
                                 <p className="text-gray-500">Payment Method: </p>
@@ -164,7 +164,7 @@ const RideHistoryCard = ({ride, role}:{ride: DocumentData, role: string}) => {
                             </div>
                             <div className="w-full h-auto flex justify-start items-start space-x-12">
                                 <p className="text-gray-500">Amount Paid: </p>
-                                <p>{paymentDetails.amount}</p>
+                                <p>&#8377;{paymentDetails.amount}</p>
                             </div>
                             <div className="w-full h-auto flex justify-start items-start space-x-5">
                                 <p className="text-gray-500">Payment Method: </p>
