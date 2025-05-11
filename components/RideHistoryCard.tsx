@@ -23,7 +23,7 @@ const RideHistoryCard = ({ride, role}:{ride: DocumentData, role: string}) => {
                     method: "POST",
                     body: JSON.stringify({
                         orderId: ride.paymentOrderId,
-                        customerId: user.id
+                        customerId: ride.riderId
                     }),
                     headers: {"Content-Type": "application/json"}
                 });
