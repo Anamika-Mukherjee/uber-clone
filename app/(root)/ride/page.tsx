@@ -1,6 +1,6 @@
 ////ride page for riders
 "use client";
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import {useRouter} from "next/navigation";
 import {useUser} from "@clerk/nextjs";
 
@@ -13,7 +13,7 @@ export default function Page() {
       router.push("/account/rider-account")
     }
     else{
-      router.push("/rider-signin");
+      router.push("/signin");
     }
 
   }, [user]);
