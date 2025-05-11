@@ -24,7 +24,7 @@ const AuthPage = () => {
     }, []);    
     
     return (
-      <div className="bg-gray-200 w-screen h-screen flex justify-end items-center lg:p-12">
+      <div className="bg-gray-200 w-screen h-screen flex justify-center lg:justify-end items-center p-12">
         <div className="w-2/3 h-full hidden lg:flex flex-col justify-center items-center">
           <div className=" z-10 absolute top-[150px] left-[100px] flex flex-col justify-center items-center">
           <p className="font-[Jura] text-[60px] text-(--brand)">RideEazy</p>
