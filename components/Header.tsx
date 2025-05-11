@@ -12,7 +12,6 @@ import {
 import { useParams } from "next/navigation";
 
 function Header() {
-  const {authType} = useParams();
   const {user} = useUser();
 
   return (
@@ -52,13 +51,13 @@ function Header() {
                 <div className="w-[20px] lg:w-[60px] h-[20px] flex justify-center items-center hover:cursor-pointer">
               
                     <Link 
-                    href={authType?`/${authType}`:"signin"}
+                    href="signin"
                     className="hidden lg:flex hover:cursor-pointer font-medium hover:font-semibold hover:text-(--brand)"
                     >
                       Sign In
                     </Link>
                     <Link 
-                    href={authType?`/${authType}`:"signin"}
+                    href="signin"
                     className="lg:hidden flex hover:cursor-pointer font-medium hover:font-semibold hover:text-(--brand)"
                     >
                       <Image 
@@ -73,7 +72,7 @@ function Header() {
                 <div className="w-[50px] h-[40px] lg:w-[100px] lg:h-[40px] lg:bg-(--brand) flex justify-center items-center lg:rounded-[30px] text-black lg:text-white hover:cursor-pointer lg:hover:bg-(--brand-dark)">
              
                     <Link 
-                    href = {authType?`/${authType}`:"rider-signup"}
+                    href = {"rider-signup"}
                     className="flex justify-center items-center text-xs lg:text-base hover:cursor-pointer"
                     >
                       Sign Up
