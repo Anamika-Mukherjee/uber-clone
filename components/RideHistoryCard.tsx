@@ -2,10 +2,12 @@
 "use client";
 import { useErrorContext } from "@/context/ErrorContext";
 import { convertToDateTime } from "@/lib/utils";
+import { useUser } from "@clerk/nextjs";
 import { DocumentData } from "firebase-admin/firestore";
 import React, { useEffect, useState } from "react";
 
 const RideHistoryCard = ({ride, role}:{ride: DocumentData, role: string}) => {
+    const {user} = useUser();
     const {setError} = useErrorContext();
     const [paymentDetails, setPaymentDetails] = useState<DocumentData>();
     const [loading, setLoading] = useState<boolean>(false);
@@ -14,28 +16,32 @@ const RideHistoryCard = ({ride, role}:{ride: DocumentData, role: string}) => {
        if(ride && ride.paymentOrderId){
         try{
           const fetchPaymentDetails = async ()=>{
-            setLoading(true);
-            //api request to get payment details for given ride from server
-            const response = await fetch("/api/getPaymentDetails", {
-                method: "POST",
-                body: JSON.stringify({
-                    orderId: ride.paymentOrderId,
-                }),
-                headers: {"Content-Type": "application/json"}
-            });
+            if(user && user.id){
+                setLoading(true);
+                //api request to get payment details for given ride from server
+                const response = await fetch("/api/getPaymentDetails", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        orderId: ride.paymentOrderId,
+                        customerId: user.id
+                    }),
+                    headers: {"Content-Type": "application/json"}
+                });
 
-            const data = await response.json();
-            console.log(data.message);
+                const data = await response.json();
+                console.log(data.message);
 
-            if(response.status !== 200){
-                setError(data.message);
-                return;
+                if(response.status !== 200){
+                    setError(data.message);
+                    return;
+                }
+                
+                if(data.paymentDetails){
+                    //store payment details in a variable
+                    setPaymentDetails(data.paymentDetails); 
+                }
             }
             
-            if(data.paymentDetails){
-                //store payment details in a variable
-                setPaymentDetails(data.paymentDetails); 
-            }
           }
           fetchPaymentDetails();
         }
@@ -60,7 +66,7 @@ const RideHistoryCard = ({ride, role}:{ride: DocumentData, role: string}) => {
     //display details for rider
     if(role === "rider"){
         return (
-            <div className="w-full h-full flex flex-col justify-start items-start space-y-2 tracking-wide text-sm ">
+            <div className="w-full h-full flex flex-col justify-start items-start space-y-2 tracking-wide text-sm bg-white">
                 <div className="w-full h-auto flex justify-start items-start space-x-16">
                     <p className="text-gray-500">Ride Date: </p>
                     <p>{convertToDateTime(ride.requestTime)}</p>
